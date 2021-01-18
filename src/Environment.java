@@ -54,12 +54,12 @@ public class Environment {
         return grid[x][y];
     }
 
-    public ArrayList<Integer[]> getAvailableSquares(int x, int y, int range) {
+    public ArrayList<Integer[]> getAvailableSquares(int x, int y) {
         ArrayList<Integer[]> availableSquares = new ArrayList<>();
-        if (x + range < m && grid[x + range][y] == null) availableSquares.add(new Integer[]{x + range, y});
-        if (x - range >= 0 && grid[x - range][y] == null) availableSquares.add(new Integer[]{x - range, y});
-        if (y + range < n && grid[x][y + range] == null) availableSquares.add(new Integer[]{x, y + range});
-        if (y - range >= 0 && grid[x][y - range] == null) availableSquares.add(new Integer[]{x, y - range});
+        if (x + 1 < m && grid[x + 1][y] == null) availableSquares.add(new Integer[]{x + 1, y});
+        if (x - 1 >= 0 && grid[x - 1][y] == null) availableSquares.add(new Integer[]{x - 1, y});
+        if (y + 1 < n && grid[x][y + 1] == null) availableSquares.add(new Integer[]{x, y + 1});
+        if (y - 1 >= 0 && grid[x][y - 1] == null) availableSquares.add(new Integer[]{x, y - 1});
         for(Integer[] pos : availableSquares) {
             if(grid[pos[0]][pos[1]] != null) {
                 System.out.println("not null " + grid[pos[0]][pos[1]].toString() + " " + pos[0] + " " + pos[1]);

@@ -44,9 +44,9 @@ public class Agent extends Element {
     public void perception(Environment environment) {
 
         neighbors = environment.neighborhood(posX, posY);
-        emptySquares = environment.getAvailableSquares(posX, posY, 1);
+        emptySquares = environment.getAvailableSquares(posX, posY);
         occupiedAround = emptySquares.isEmpty();
-        availableSquares = environment.getAvailableSquares(posX, posY, range);
+        availableSquares = environment.getAvailableSquares(posX, posY);
 
         if (item != null)
             f = MonteCarloModel.getF(neighbors, item);
@@ -91,7 +91,8 @@ public class Agent extends Element {
             else
                 addMemory('0');
         }
-        move(environment, itemDroppedPosition);
+        for(int i = 0; i < range; i++)
+            move(environment, itemDroppedPosition);
     }
 
     private void move(Environment environment, Integer[] itemDroppedPosition) {

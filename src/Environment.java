@@ -68,16 +68,10 @@ public class Environment {
         if (x - 1 >= 0 && grid[x - 1][y] == null) availableSquares.add(new Integer[]{x - 1, y});
         if (y + 1 < n && grid[x][y + 1] == null) availableSquares.add(new Integer[]{x, y + 1});
         if (y - 1 >= 0 && grid[x][y - 1] == null) availableSquares.add(new Integer[]{x, y - 1});
-        for(Integer[] pos : availableSquares) {
-            if(grid[pos[0]][pos[1]] != null) {
-                System.out.println("not null " + grid[pos[0]][pos[1]].toString() + " " + pos[0] + " " + pos[1]);
-            }
-        }
         return availableSquares;
     }
 
     public void addElement(int x, int y, Element element) {
-        if (grid[x][y] != null)
         grid[x][y] = element;
     }
 

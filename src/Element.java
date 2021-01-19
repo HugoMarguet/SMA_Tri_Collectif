@@ -1,4 +1,4 @@
-public class Element {
+public abstract class Element {
 
     public Element(int posX, int posY) {
         this.posX = posX;

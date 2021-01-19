@@ -41,6 +41,12 @@ public class Environment {
                 }).forEach(element -> grid[element.getPosX()][element.getPosY()] = element);
     }
 
+    /**
+     *
+     * @param x position abscisse de la case
+     * @param y position ordonnée de la case
+     * @return Une liste d' éléments voisins N,S,E,O de la case (x,y)
+     */
     public ArrayList<Element> neighborhood(int x, int y) {
         ArrayList<Element> neighbors = new ArrayList<>();
         if (x + 1 < m) neighbors.add(grid[x + 1][y]);
@@ -50,10 +56,12 @@ public class Environment {
         return (ArrayList<Element>) neighbors.stream().filter(Objects::nonNull).collect(Collectors.toList());
     }
 
-    public Element getElement(int x, int y) {
-        return grid[x][y];
-    }
-
+    /**
+     *
+     * @param x position abscisse de la case
+     * @param y position ordonnée de la case
+     * @return Une liste de position des cases vide autour de la case (x,y)
+     */
     public ArrayList<Integer[]> getAvailableSquares(int x, int y) {
         ArrayList<Integer[]> availableSquares = new ArrayList<>();
         if (x + 1 < m && grid[x + 1][y] == null) availableSquares.add(new Integer[]{x + 1, y});
@@ -70,7 +78,6 @@ public class Environment {
 
     public void addElement(int x, int y, Element element) {
         if (grid[x][y] != null)
-            System.out.println("not null " + grid[x][y].toString() + " " + x + " " + y + " El : " + element.toString());
         grid[x][y] = element;
     }
 
@@ -80,6 +87,10 @@ public class Environment {
         grid[x][y] = null;
     }
 
+    /**
+     * Itère sur un nouvel agent
+     * @return agent suivant
+     */
     public Agent next() {
         counterAgent++;
         return (Agent) agents.get(counterAgent % agents.size());

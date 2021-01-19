@@ -34,13 +34,17 @@ public class Agent extends Element {
         emptySquares = new ArrayList<>();
         availableSquares = new ArrayList<>();
         f = new HashMap<>();
-        f.put(Item.ID.A, null);
-        f.put(Item.ID.B, null);
+        f.put(Item.ID.A, 0d);
+        f.put(Item.ID.B, 0d);
 
         memory = "";
         IntStream.range(0, memorySize).forEach(i -> this.memory += "0");
     }
 
+    /**
+     * Percevoir l'environnement pour mettre à jour les informations nécessaires à l'agent sur l'environnement
+     * @param environment
+     */
     public void perception(Environment environment) {
 
         neighbors = environment.neighborhood(posX, posY);
@@ -54,6 +58,10 @@ public class Agent extends Element {
             f = MonteCarloModel.getF(memory);
     }
 
+    /**
+     * Interagir avec l'environnement grâce aux informations récupérés par la perception
+     * @param environment
+     */
     public void doAction(Environment environment) {
         double p = Math.random();
         Integer [] itemDroppedPosition = null;
@@ -73,10 +81,10 @@ public class Agent extends Element {
 
             if (AIsAround && !BIsAround) {
                 addMemory('A');
-                if (p > pA) take_item(Item.ID.A, environment);
+                if (p < pA) take_item(Item.ID.A, environment);
             } else if (!AIsAround && BIsAround) {
                 addMemory('B');
-                if (p > pB) take_item(Item.ID.B, environment);
+                if (p < pB) take_item(Item.ID.B, environment);
             } else if (AIsAround && BIsAround)
                 if (p < pA && pB < pA) {
                     addMemory('A');
@@ -86,8 +94,18 @@ public class Agent extends Element {
                     addMemory('B');
                     take_item(Item.ID.B, environment);
                 }
+                else if (p < pA && pA == pB) {
+                    if (Math.random() > 0.5) {
+                        addMemory('A');
+                        take_item(Item.ID.A, environment);
+                    }
+                    else {
+                        addMemory('B');
+                        take_item(Item.ID.B, environment);
+                    }
+                }
                 else
-                    addMemory(pA > pB ? 'A' : 'B');
+                    addMemory(pA == pB  ? (Math.random() > 0.5 ? 'A' : 'B') : (pA > pB ? 'A' : 'B'));
             else
                 addMemory('0');
         }
@@ -134,7 +152,7 @@ public class Agent extends Element {
     }
 
     public String toString() {
-        return "#"; //String.valueOf(id);
+        return " "; //"#"; //String.valueOf(id);
     }
 
     public boolean equals(Object o) {

@@ -3,7 +3,7 @@
 
 ## Documentation du code
 ### Diagramme de classes
-![Diagramme de classes](class_diagram.png)
+![Diagramme de classes](images/class_diagram.png)
 
 #### Classe Tri :
 La classe Tri est la classe principale contenant la fonction `main(String[] args)`.
@@ -30,7 +30,7 @@ répartis aléatoirement sur la grille.
 Elle sert à mettre à jour l'environnement et l'agent qui doit agir.
 
 #### Classe Element
-C'est une classe abstraite qui définit les éléménents par leur position.
+C'est une classe abstraite qui définit les éléments par leur position.
 
 #### Classe Item
 La classe `Item` hérite de la classe `Element` et définit les objets qui peuvent être de type
@@ -42,7 +42,21 @@ instance de la classe. Les méthodes principales sont `perception(Environment en
 `doAction(Environment environment)`.
 
 ## Réalisation
+
 ### Question 1
+
+```java
+new MonteCarloModel(0.1, 0.3, 0.d);
+launch(50, 50, 50, 20, 1, 10);
+```
+
+![Diagramme de classes](images/q1_initb.png) *initialisation*
+![Diagramme de classes](images/q1_sortb.png) *objets triés*
+
+Les agents ont bien rassemblé les objets en groupes et globalement par leur type même si la séparation pourrait 
+être plus distincte.
+
+
 ### Question 2
 
 

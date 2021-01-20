@@ -22,4 +22,6 @@ public abstract class Element {
     public void setPosY(int posY) {
         this.posY = posY;
     }
+
+    public abstract Element copy();
 }

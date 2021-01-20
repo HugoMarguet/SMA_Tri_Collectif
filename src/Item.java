@@ -21,6 +21,10 @@ public class Item extends Element{
         return id.toString();
     }
 
+    public Item copy() {
+        return new Item(id, posX, posY);
+    }
+
     public ID getId() {
         return id;
     }

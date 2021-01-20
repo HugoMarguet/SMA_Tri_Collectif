@@ -14,6 +14,20 @@ public class Environment {
     private int counterAgent;
 
 
+    public Environment(int m, int n, Element[][] grid, List<Element> agents, int counterAgent){
+        this.m = m;
+        this.n = n;
+        this.grid = new Element[m][n];
+        this.agents = new ArrayList<>();
+        this.counterAgent = counterAgent;
+
+        for(int i = 0; i < m; i++)
+            for(int j = 0; j < n; j++)
+                this.grid[i][j] = grid[i][j] != null ? grid[i][j].copy() : null;
+        for(Element agent : agents)
+            this.agents.add(agent.copy());
+    }
+
     public Environment(int m, int n, int nbItemsA, int nbItemsB, int nbAgents, int range, int memorySize) {
         this.counterAgent = -1;
         this.m = m;
@@ -90,6 +104,18 @@ public class Environment {
         return (Agent) agents.get(counterAgent % agents.size());
     }
 
+    public String info() {
+        int range = -1;
+        int memoryLength = -1;
+        if (agents.get(0) != null) {
+            Agent agent = (Agent) agents.get(0);
+            range = agent.getRange();
+            memoryLength = agent.getMemoryLength();
+        }
+        return String.format("Env { m=%d, n=%d, agents=%d, range=%d, memory=%d }",
+                m, n, agents.size(), range, memoryLength);
+    }
+
     public String toString() {
         StringBuilder gridVue = new StringBuilder();
         Element el;
@@ -116,5 +142,9 @@ public class Environment {
             }
         }
         return counter;
+    }
+
+    public Environment copy(){
+        return new Environment(m, n, grid, agents, counterAgent);
     }
 }

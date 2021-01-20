@@ -11,7 +11,7 @@ public class Agent extends Element {
     private static MonteCarloModel model;
 
     private final int id;
-    private final int range;
+    private int range;
     private String memory;
 
     private Map<Item.ID, Double> f;
@@ -20,6 +20,23 @@ public class Agent extends Element {
     private ArrayList<Integer[]> emptySquares;
     private ArrayList<Integer[]> availableSquares;
     private boolean occupiedAround;
+
+    public Agent(int posX, int posY, int range, String memory, Item item) {
+        super(posX, posY);
+        id = ID_COUNTER;
+        ID_COUNTER++;
+        this.range = range;
+        this.memory = memory;
+        this.item = item != null ? item.copy() : null;
+
+        // Ne copie pas la perception
+        neighbors = new ArrayList<>();
+        emptySquares = new ArrayList<>();
+        availableSquares = new ArrayList<>();
+        f = new HashMap<>();
+        f.put(Item.ID.A, 0d);
+        f.put(Item.ID.B, 0d);
+    }
 
     public Agent(int posX, int posY, int range, int memorySize) {
 
@@ -31,6 +48,7 @@ public class Agent extends Element {
         this.range = range;
 
         item = null;
+        neighbors = new ArrayList<>();
         emptySquares = new ArrayList<>();
         availableSquares = new ArrayList<>();
         f = new HashMap<>();
@@ -66,7 +84,7 @@ public class Agent extends Element {
         double p = Math.random();
         Integer [] itemDroppedPosition = null;
         if (item != null) {
-            if (!occupiedAround && p > MonteCarloModel.pickDown(f.get(item.getId()))) {
+            if (!occupiedAround && p < MonteCarloModel.putDown(f.get(item.getId()))) {
                 itemDroppedPosition = drop_Item(environment);
             }
         }
@@ -151,6 +169,14 @@ public class Agent extends Element {
         memory += c;
     }
 
+    public int getRange() {
+        return range;
+    }
+
+    public int getMemoryLength() {
+        return memory.length();
+    }
+
     public String toString() {
         return " "; //"#"; //String.valueOf(id);
     }
@@ -164,5 +190,9 @@ public class Agent extends Element {
 
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public Agent copy() {
+        return new Agent(posX, posY, range, memory, item);
     }
 }

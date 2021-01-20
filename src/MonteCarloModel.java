@@ -14,11 +14,11 @@ public class MonteCarloModel {
         error = e;
     }
 
-    public static double pickUp(double f) {
+    public static double putDown(double f) {
         return Math.pow(f / (kMinus + f), 2);
     }
 
-    public static double pickDown(double f) {
+    public static double pickUp(double f) {
         return Math.pow(kPlus / (kPlus + f), 2);
     }
 
@@ -56,6 +56,10 @@ public class MonteCarloModel {
         f.put(Item.ID.A, fA);
         f.put(Item.ID.B, fB);
         return f;
+    }
+
+    public static String info() {
+        return String.format("MCM { k+=%.2f, k-=%.2f, e=%.2f }", kPlus, kMinus, error);
     }
 
 }

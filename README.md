@@ -18,7 +18,7 @@ agent.doAction(env);
 counter++;
 ```
 #### Classe MonteCarloModel
-C'est une classe qui permet de calculer les probabilités de prise ou de dépot d'objets par les agents.
+C'est une classe qui permet de calculer les probabilités de prise ou de dépôt d'objets par les agents.
 On utilise cette classe de manière statique, il n'est pas utile d'affecter une instance à un objet 
 puisqu' elle possède seulement des attributs et des méthodes statiques.  
 
@@ -59,11 +59,11 @@ Les agents ont bien rassemblé les objets en groupes et globalement par leur typ
 
 ### Question 2
 
-On utilise la variante qui consiste à introduire un pourcentage d’erreur `e` dans la reconnaissance des objets 
-(si e=0 on revient à la version orginale). La proportion d'objets `f` pour chaque type d'objet va augmenter 
+On utilise la variante qui consiste à introduire un pourcentage d’erreurs `e` dans la reconnaissance des objets 
+(si `e=0` on revient à la version orginale). La proportion d'objets `f` pour chaque type d'objet va augmenter 
 puisqu'on prend en compte pour chacun l'autre type réevaluer par l'erreur `e`. Par conséquent la probabilité 
-de dépot `putDown(double f)` va augmenter aux alentours des groupes mixtes et la probabilité de prise 
-`pickUp(double f)` diminuer avec la densité des objets en mémoire.  
+de dépôt `putDown(double f)` va augmenter aux alentours des groupes mixtes et la probabilité de prise 
+`pickUp(double f)` diminue avec la densité des objets en mémoire.  
 On peut conjecturer que l'agent dégradera moins les groupes d'objets en différenciant moins les types d'objets.
 
 #### Tests en faisant varier l'erreur :
@@ -80,13 +80,13 @@ sinon elle ne permet plus de bien séparer les deux types d'objets
 Les groupes semblent aussi plus ressérrés quand l'erreur augmente par l'exemple avec 
 `e = 0.8` est marquant par rapport à `e = 0.2`.
 
-### Influence de la disposition initale des éléments
+### Influence de la disposition initiale des éléments
 
 ![CI identique](images/fluctuation1.png)
 ![CI identique](images/fluctuation2.png)
 
 Les résultats ci-dessus sont sensiblement similaires, la figure en bas à gauche montre qu'il peut y avoir des disparités 
-selon les essais causées par l'introdcution de l'aléatoire dans la décision de l'agent.
+selon les essais causées par l'introduction de l'aléatoire dans la décision de l'agent.
 
 ![CI différentes](images/diff_CI1.png)
 ![CI différentes](images/diff_CI2.png)
@@ -97,7 +97,7 @@ les même CI pour comparer les résultats.
 ### Influence de k+ et k-
 
 Lorsque `k+` augmente la probabilité de prise `pickUp(double f)` augmente tandis que lorsque `k-` augmente 
-la probabilité de dépot `putDown(double f)` diminue.
+la probabilité de dépôt `putDown(double f)` diminue.
 
 #### Version intiale (`e=0`) k+
 

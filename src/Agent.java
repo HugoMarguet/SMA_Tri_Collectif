@@ -178,7 +178,7 @@ public class Agent extends Element {
     }
 
     public String toString() {
-        return " "; //"#"; //String.valueOf(id);
+        return " ";//item == null ? "#" : item.getId() == Item.ID.A ? "A" : "B"; //"#"; //String.valueOf(id);
     }
 
     public boolean equals(Object o) {

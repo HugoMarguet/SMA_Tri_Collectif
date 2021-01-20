@@ -68,9 +68,9 @@ On peut conjecturer que l'agent dégradera moins les groupes d'objets en différ
 
 #### Tests en faisant varier l'erreur :
 ![Question 2 err = 0](images/q2_e=0.png)
-![Question 2 err = 2](images/q2_e=0.2.png)
-![Question 2 err = 4](images/q2_e=0.4.png)
-![Question 2 err = 8](images/q2_e=0.8.png)
+![Question 2 err = 2](images/q2_e=02.png)
+![Question 2 err = 4](images/q2_e=04.png)
+![Question 2 err = 8](images/q2_e=08.png)
 
 #### Conclusion 
 Les groupes sont plus espacé lorsque l'erreur est proche de `e = 0`. L'erreur ne doit pas être trop grande (`e > 0`) 
@@ -80,6 +80,45 @@ sinon elle ne permet plus de bien séparer les deux types d'objets
 Les groupes semblent aussi plus ressérrés quand l'erreur augmente par l'exemple avec 
 `e = 0.8` est marquant par rapport à `e = 0.2`.
 
+### Influence de la disposition initale des éléments
 
+![CI identique](images/fluctuation1.png)
+![CI identique](images/fluctuation2.png)
 
+Les résultats ci-dessus sont sensiblement similaires, la figure en bas à gauche montre qu'il peut y avoir des disparités 
+selon les essais causées par l'introdcution de l'aléatoire dans la décision de l'agent.
 
+![CI différentes](images/diff_CI1.png)
+![CI différentes](images/diff_CI2.png)
+
+Les résultats sont un peu différents même si globalement ils se ressemblent, il est tout de même préférable de garder 
+les même CI pour comparer les résultats.
+
+### Influence de k+ et k-
+
+Lorsque `k+` augmente la probabilité de prise `pickUp(double f)` augmente tandis que lorsque `k-` augmente 
+la probabilité de dépot `putDown(double f)` diminue.
+
+#### Version intiale (`e=0`) k+
+
+![K+](images/k+=09.png)
+![K+](images/k+=1.png)
+
+Quand `k+` est très grand les agents crées de plus petits groupes.
+
+![K+](images/k+=005.png)
+![K+](images/k+=015.png)
+
+`k+` assez faible donne de bon résultat et force les agents à prendre seulement des objets plutôt isolés.
+
+#### Variante (`e=0.2`) k+
+
+![K+ avec e=0.02](images/ek+=015.png)
+![K+ avec e=0.02](images/ek+=025.png)
+
+En utilisant la variante, `f` augmente et donc il faut compenser avec `k+` qui peut être plus élevé afin que la 
+probabilité de prise `pickUp(double f)`ne soit pas trop faible.
+
+#### Version intiale (`e=0`) k-
+
+#### Variante (`e=0.2`) k-

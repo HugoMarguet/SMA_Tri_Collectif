@@ -140,7 +140,8 @@ De plus l'erreur (ainsi que la taille mémoire) est à bien prendre en compte av
 ### La taille mémoire
 
 La taille mémoire ne doit pas être trop grande sinon elle ne permet plus à l'agent de distinguer un objet isolé 
-d'un groupe d'objets et l'agent a du mal à laisser des groupes (voir ci-dessous pour une mémoire de 20)
+d'un groupe d'objets et l'agent a du mal à laisser des groupes (voir ci-dessous pour une mémoire de 20) et doit 
+dépendre aussi du nombre d'objets.
 
 ![Memoire 20](images/memory20.png)
 

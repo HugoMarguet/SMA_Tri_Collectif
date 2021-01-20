@@ -113,12 +113,35 @@ Quand `k+` est très grand les agents crées de plus petits groupes.
 
 #### Variante (`e=0.2`) k+
 
-![K+ avec e=0.02](images/ek+=015.png)
-![K+ avec e=0.02](images/ek+=025.png)
+![K+ avec e= 0.02](images/ek+=015.png)
+![K+ avec e= 0.02](images/ek+=025.png)
 
 En utilisant la variante, `f` augmente et donc il faut compenser avec `k+` qui peut être plus élevé afin que la 
 probabilité de prise `pickUp(double f)`ne soit pas trop faible.
 
-#### Version intiale (`e=0`) k-
+#### k-
 
-#### Variante (`e=0.2`) k-
+![K- avec e= 0](images/k-=055.png)
+![K- avec e= 0](images/k-=065.png)
+
+`k-` doit être assez élevé en comparaison avec `k+` afin que la probabilité de dépot `putDown(double f)`
+soit assez basse pour la poser seulement aux alentours de groupes d'objets.
+
+![K- avec e= 0](images/k-=005.png)
+![K- avec e= 0](images/k-=015.png)
+
+En effet si `k-` est trop faible, le tri collectif va former plus de petits groupes.
+
+#### Comparaison de k+ et k-
+
+`k+` est plus sensible que `k-`, en effet les résultats change beacoup plus avec une variation de `k+`.
+De plus l'erreur (ainsi que la taille mémoire) est à bien prendre en compte avec les paramètres `k+` et `k-`.
+
+### La taille mémoire
+
+La taille mémoire ne doit pas être trop grande sinon elle ne permet plus à l'agent de distinguer un objet isolé 
+d'un groupe d'objets et l'agent a du mal à laisser des groupes (voir ci-dessous pour une mémoire de 20)
+
+![Memoire 20](images/memory20.png)
+
+

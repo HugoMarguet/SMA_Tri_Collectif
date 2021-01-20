@@ -119,7 +119,7 @@ public class Environment {
     public String toString() {
         StringBuilder gridVue = new StringBuilder();
         Element el;
-        final int length = (m + 1) * 2 + 1;
+        final int length = (n + 1) * 2 + 1;
         IntStream.range(0, length).forEach(i -> gridVue.append("-"));
         for (int i = 0; i < m; i++) {
             gridVue.append("\n|");

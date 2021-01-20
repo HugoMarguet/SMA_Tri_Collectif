@@ -59,4 +59,27 @@ Les agents ont bien rassemblé les objets en groupes et globalement par leur typ
 
 ### Question 2
 
+On utilise la variante qui consiste à introduire un pourcentage d’erreur `e` dans la reconnaissance des objets 
+(si e=0 on revient à la version orginale). La proportion d'objets `f` pour chaque type d'objet va augmenter 
+puisqu'on prend en compte pour chacun l'autre type réevaluer par l'erreur `e`. Par conséquent la probabilité 
+de dépot `putDown(double f)` va augmenter aux alentours des groupes mixtes et la probabilité de prise 
+`pickUp(double f)` diminuer avec la densité des objets en mémoire.  
+On peut conjecturer que l'agent dégradera moins les groupes d'objets en différenciant moins les types d'objets.
+
+#### Tests en faisant varier l'erreur :
+![Question 2 err = 0](images/q2_e=0.png)
+![Question 2 err = 2](images/q2_e=0.2.png)
+![Question 2 err = 4](images/q2_e=0.4.png)
+![Question 2 err = 8](images/q2_e=0.8.png)
+
+#### Conclusion 
+Les groupes sont plus espacé lorsque l'erreur est proche de `e = 0`. L'erreur ne doit pas être trop grande (`e > 0`) 
+sinon elle ne permet plus de bien séparer les deux types d'objets 
+<span style=color:red>A</span> et <span style=color:blue>B</span>.
+
+Les groupes semblent aussi plus ressérrés quand l'erreur augmente par l'exemple avec 
+`e = 0.8` est marquant par rapport à `e = 0.2`.
+
+
+
 

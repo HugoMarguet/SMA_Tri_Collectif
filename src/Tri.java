@@ -1,12 +1,12 @@
 public class Tri {
 
-    private static final int LIMIT = 1000000;
+    private static final int LIMIT = 3000000;
 
     private static void launch(int m, int nbA, int nbB, int nbAgents, int range, int memorySize) {
         Environment env = new Environment(m,m, nbA, nbB, nbAgents, range, memorySize);
         displayInfo(env);
         System.out.println(env);
-        start(env, LIMIT);
+        start(env);
         System.out.println(env);
     }
 
@@ -16,7 +16,7 @@ public class Tri {
         Environment env;
         for (int run = 0; run < nbRun; run++) {
             env = environment.copy();
-            start(env, LIMIT);
+            start(env);
             System.out.println(env);
         }
     }
@@ -30,16 +30,16 @@ public class Tri {
             new MonteCarloModel(0.1, 0.3, e);
             System.out.println(MonteCarloModel.info());
             env = environment.copy();
-            start(env, LIMIT);
+            start(env);
             System.out.println(env);
             e += step;
         }
     }
 
-    private static void start(Environment env, int limit) {
+    private static void start(Environment env) {
         Agent agent;
         int counter = 0;
-        while (counter < limit) {
+        while (counter < LIMIT) {
             agent = env.next();
             agent.perception(env);
             agent.doAction(env);
@@ -57,7 +57,7 @@ public class Tri {
         new MonteCarloModel(0.1, 0.3, 0.d);
         launch(50, 50, 50, 20, 1, 10);
 
-        Environment env = new Environment(15, 15, 15, 15, 5, 1, 5);
+        Environment env = new Environment(15, 15, 10, 10, 5, 1, 5);
 
         // Compare les fluctuations aléatoires avec les même CI
         new MonteCarloModel(0.1, 0.3, 0d);
